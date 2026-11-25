@@ -1,0 +1,75 @@
+# HELP hdfs_api_requests_total Peticiones HTTP por endpoint, método y código
+# TYPE hdfs_api_requests_total counter
+hdfs_api_requests_total{endpoint="/health",method="GET",status="200"} 3.0
+hdfs_api_requests_total{endpoint="/predict",method="POST",status="200"} 6200.0
+hdfs_api_requests_total{endpoint="/predict",method="POST",status="422"} 3.0
+# HELP hdfs_api_requests_created Peticiones HTTP por endpoint, método y código
+# TYPE hdfs_api_requests_created gauge
+hdfs_api_requests_created{endpoint="/health",method="GET",status="200"} 1.7954665985881503e+09
+hdfs_api_requests_created{endpoint="/predict",method="POST",status="200"} 1.7954666017258317e+09
+hdfs_api_requests_created{endpoint="/predict",method="POST",status="422"} 1.7954666421068835e+09
+# HELP hdfs_api_request_duration_seconds Latencia de las peticiones por endpoint
+# TYPE hdfs_api_request_duration_seconds histogram
+hdfs_api_request_duration_seconds_bucket{endpoint="/health",le="0.005"} 3.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/health",le="0.01"} 3.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/health",le="0.025"} 3.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/health",le="0.05"} 3.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/health",le="0.1"} 3.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/health",le="0.25"} 3.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/health",le="0.5"} 3.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/health",le="1.0"} 3.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/health",le="2.5"} 3.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/health",le="+Inf"} 3.0
+hdfs_api_request_duration_seconds_count{endpoint="/health"} 3.0
+hdfs_api_request_duration_seconds_sum{endpoint="/health"} 0.003251711999993745
+hdfs_api_request_duration_seconds_bucket{endpoint="/predict",le="0.005"} 6202.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/predict",le="0.01"} 6202.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/predict",le="0.025"} 6202.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/predict",le="0.05"} 6203.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/predict",le="0.1"} 6203.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/predict",le="0.25"} 6203.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/predict",le="0.5"} 6203.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/predict",le="1.0"} 6203.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/predict",le="2.5"} 6203.0
+hdfs_api_request_duration_seconds_bucket{endpoint="/predict",le="+Inf"} 6203.0
+hdfs_api_request_duration_seconds_count{endpoint="/predict"} 6203.0
+hdfs_api_request_duration_seconds_sum{endpoint="/predict"} 9.668462928998693
+# HELP hdfs_api_request_duration_seconds_created Latencia de las peticiones por endpoint
+# TYPE hdfs_api_request_duration_seconds_created gauge
+hdfs_api_request_duration_seconds_created{endpoint="/health"} 1.7954665985881686e+09
+hdfs_api_request_duration_seconds_created{endpoint="/predict"} 1.7954666017258444e+09
+# HELP hdfs_api_errors_total Respuestas de error por endpoint y tipo (client=4xx, server=5xx)
+# TYPE hdfs_api_errors_total counter
+hdfs_api_errors_total{endpoint="/predict",kind="client"} 3.0
+# HELP hdfs_api_errors_created Respuestas de error por endpoint y tipo (client=4xx, server=5xx)
+# TYPE hdfs_api_errors_created gauge
+hdfs_api_errors_created{endpoint="/predict",kind="client"} 1.7954666421068969e+09
+# HELP hdfs_predictions_total Predicciones emitidas por clase
+# TYPE hdfs_predictions_total counter
+hdfs_predictions_total{prediction="normal"} 5718.0
+hdfs_predictions_total{prediction="anomaly"} 482.0
+# HELP hdfs_predictions_created Predicciones emitidas por clase
+# TYPE hdfs_predictions_created gauge
+hdfs_predictions_created{prediction="normal"} 1.7954665982257032e+09
+hdfs_predictions_created{prediction="anomaly"} 1.79546659822571e+09
+# HELP hdfs_prediction_score Distribución de la puntuación de anomalía
+# TYPE hdfs_prediction_score histogram
+hdfs_prediction_score_bucket{le="0.001"} 5718.0
+hdfs_prediction_score_bucket{le="0.01"} 5718.0
+hdfs_prediction_score_bucket{le="0.05"} 5718.0
+hdfs_prediction_score_bucket{le="0.0722"} 5718.0
+hdfs_prediction_score_bucket{le="0.25"} 5720.0
+hdfs_prediction_score_bucket{le="0.5"} 5731.0
+hdfs_prediction_score_bucket{le="0.75"} 5736.0
+hdfs_prediction_score_bucket{le="0.9"} 5758.0
+hdfs_prediction_score_bucket{le="0.99"} 5795.0
+hdfs_prediction_score_bucket{le="0.999"} 5868.0
+hdfs_prediction_score_bucket{le="+Inf"} 6200.0
+hdfs_prediction_score_count 6200.0
+hdfs_prediction_score_sum 468.1602475131923
+# HELP hdfs_prediction_score_created Distribución de la puntuación de anomalía
+# TYPE hdfs_prediction_score_created gauge
+hdfs_prediction_score_created 1.7954665982256627e+09
+# HELP hdfs_model_info Modelo servido (valor constante 1)
+# TYPE hdfs_model_info gauge
+hdfs_model_info{gate="failed",mode="demo",model_status="rejected",model_version="lr-frozen-feda273"} 1.0

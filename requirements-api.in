@@ -1,0 +1,11 @@
+# Dependencias directas del servicio de inferencia. La imagen Docker instala
+# requirements-api.txt, generado a partir de este archivo con todas las versiones fijadas:
+#   uv pip compile --universal --python-version 3.14 requirements-api.in -o requirements-api.txt
+numpy==2.5.5
+pandas==3.1.1
+scikit-learn==1.9.1
+joblib==1.6.0
+fastapi==0.165.0
+pydantic==2.14.4
+uvicorn==0.54.0
+prometheus-client==0.26.0

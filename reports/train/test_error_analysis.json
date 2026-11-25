@@ -1,0 +1,227 @@
+{
+  "note": "Análisis descriptivo post-hoc de test. NO se usa para seleccionar ni ajustar nada; la decisión del gate ya consta en test_evaluation.json. Los campos 'pattern_rows_in_validation' y 'pattern_anomaly_rate_validation' se refieren aquí a test (se reutiliza la función de validation).",
+  "model_sha256": "da81e6ba7be50c103887e78a5912340cd40f563d9c20368827f55402b79d1076",
+  "threshold": 0.07222539011103471,
+  "irreducible_errors_validation": 0,
+  "ambiguous_patterns_validation": 0,
+  "false_positives": {
+    "total": 343,
+    "distinct_patterns": 6,
+    "top": [
+      {
+        "count": 293,
+        "pattern_seen_in_train": false,
+        "pattern_rows_in_validation": 293,
+        "pattern_anomaly_rate_validation": 0.0,
+        "events": {
+          "E5": 6,
+          "E6": 3,
+          "E9": 3,
+          "E11": 3,
+          "E16": 3,
+          "E18": 3,
+          "E21": 3,
+          "E22": 1,
+          "E25": 3,
+          "E26": 9
+        }
+      },
+      {
+        "count": 41,
+        "pattern_seen_in_train": false,
+        "pattern_rows_in_validation": 41,
+        "pattern_anomaly_rate_validation": 0.0,
+        "events": {
+          "E2": 1,
+          "E5": 6,
+          "E6": 3,
+          "E9": 3,
+          "E11": 3,
+          "E16": 3,
+          "E18": 3,
+          "E21": 3,
+          "E22": 1,
+          "E25": 3,
+          "E26": 9
+        }
+      },
+      {
+        "count": 4,
+        "pattern_seen_in_train": false,
+        "pattern_rows_in_validation": 4,
+        "pattern_anomaly_rate_validation": 0.0,
+        "events": {
+          "E2": 2,
+          "E5": 6,
+          "E6": 3,
+          "E9": 3,
+          "E11": 3,
+          "E16": 3,
+          "E18": 3,
+          "E21": 3,
+          "E22": 1,
+          "E25": 3,
+          "E26": 9
+        }
+      },
+      {
+        "count": 3,
+        "pattern_seen_in_train": false,
+        "pattern_rows_in_validation": 3,
+        "pattern_anomaly_rate_validation": 0.0,
+        "events": {
+          "E5": 4,
+          "E6": 1,
+          "E9": 3,
+          "E11": 3,
+          "E16": 1,
+          "E18": 1,
+          "E21": 4,
+          "E22": 1,
+          "E23": 4,
+          "E25": 1,
+          "E26": 5
+        }
+      },
+      {
+        "count": 1,
+        "pattern_seen_in_train": false,
+        "pattern_rows_in_validation": 1,
+        "pattern_anomaly_rate_validation": 0.0,
+        "events": {
+          "E5": 7,
+          "E6": 4,
+          "E9": 3,
+          "E11": 3,
+          "E16": 4,
+          "E18": 4,
+          "E21": 4,
+          "E22": 1,
+          "E25": 4,
+          "E26": 11
+        }
+      },
+      {
+        "count": 1,
+        "pattern_seen_in_train": false,
+        "pattern_rows_in_validation": 1,
+        "pattern_anomaly_rate_validation": 0.0,
+        "events": {
+          "E2": 3,
+          "E5": 6,
+          "E6": 3,
+          "E9": 3,
+          "E11": 3,
+          "E16": 3,
+          "E18": 3,
+          "E21": 3,
+          "E22": 1,
+          "E25": 3,
+          "E26": 9
+        }
+      }
+    ]
+  },
+  "false_negatives": {
+    "total": 6,
+    "distinct_patterns": 4,
+    "top": [
+      {
+        "count": 2,
+        "pattern_seen_in_train": false,
+        "pattern_rows_in_validation": 2,
+        "pattern_anomaly_rate_validation": 1.0,
+        "events": {
+          "E5": 4,
+          "E6": 1,
+          "E9": 3,
+          "E11": 3,
+          "E16": 1,
+          "E18": 1,
+          "E21": 1,
+          "E22": 1,
+          "E25": 1,
+          "E26": 6
+        }
+      },
+      {
+        "count": 2,
+        "pattern_seen_in_train": false,
+        "pattern_rows_in_validation": 2,
+        "pattern_anomaly_rate_validation": 1.0,
+        "events": {
+          "E1": 2,
+          "E5": 5,
+          "E9": 3,
+          "E10": 1,
+          "E11": 5,
+          "E15": 2,
+          "E21": 3,
+          "E22": 1,
+          "E23": 3,
+          "E26": 3
+        }
+      },
+      {
+        "count": 1,
+        "pattern_seen_in_train": false,
+        "pattern_rows_in_validation": 1,
+        "pattern_anomaly_rate_validation": 1.0,
+        "events": {
+          "E1": 2,
+          "E5": 8,
+          "E6": 3,
+          "E9": 3,
+          "E10": 1,
+          "E11": 5,
+          "E15": 2,
+          "E16": 3,
+          "E18": 3,
+          "E21": 3,
+          "E22": 1,
+          "E25": 3,
+          "E26": 9
+        }
+      },
+      {
+        "count": 1,
+        "pattern_seen_in_train": false,
+        "pattern_rows_in_validation": 1,
+        "pattern_anomaly_rate_validation": 1.0,
+        "events": {
+          "E3": 203,
+          "E5": 13,
+          "E6": 10,
+          "E9": 3,
+          "E11": 3,
+          "E16": 5,
+          "E18": 5,
+          "E21": 13,
+          "E22": 1,
+          "E23": 10,
+          "E25": 5,
+          "E26": 13
+        }
+      }
+    ]
+  },
+  "fp_score_quantiles": {
+    "0.0": 0.9988,
+    "0.25": 0.9997,
+    "0.5": 0.9997,
+    "0.75": 0.9997,
+    "1.0": 0.9999
+  },
+  "fp_top3_share": 0.9854,
+  "fp_completion_time": {
+    "fp_completion_first": "2008-11-11 09:08:12",
+    "fp_completion_last": "2008-11-11 11:16:28",
+    "test_completion_first": "2008-11-11 08:47:57",
+    "test_completion_last": "2008-11-11 11:16:28",
+    "fp_per_hour": {
+      "2008-11-11 09:00:00": 332,
+      "2008-11-11 10:00:00": 8,
+      "2008-11-11 11:00:00": 3
+    }
+  }
+}

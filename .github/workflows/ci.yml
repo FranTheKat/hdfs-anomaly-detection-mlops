@@ -1,0 +1,107 @@
+# Integración continua. Sin dataset completo, sin entrenamientos pesados y sin
+# evaluate-test. No publica nada (la publicación es responsabilidad exclusiva de cd.yml).
+#
+# Se separan tres cosas:
+#   1. que el componente de release funciona (pruebas con repositorios sintéticos: rama aprobada,
+#      rama rechazada e integridad fallida);
+#   2. la decisión sobre la versión real (aprobada o bloqueada: ambas son resultados válidos);
+#   3. la autorización efectiva para publicar, que solo concede cd.yml.
+# La CI solo falla si la decisión no puede tomarse (integridad o error), nunca por el resultado.
+# El candidato incluido procede de otro repositorio (procedencia «imported»): release decide lo
+# bloquea siempre, porque este historial no demuestra que test se evaluara una sola vez.
+#
+# Acciones fijadas por SHA completo de su versión oficial (verificado con la API de GitHub).
+name: ci
+
+on:
+  push:
+  pull_request:  # nunca pull_request_target: el código de un PR no se ejecuta con permisos elevados
+
+permissions:
+  contents: read  # mínimo; ningún job necesita escribir
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  MLFLOW_DISABLE_AGENT_HINT: "1"
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+
+jobs:
+  test:
+    name: lint y pruebas
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    outputs:
+      approved: ${{ steps.release.outputs.approved }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          fetch-depth: 0             # el gate necesita el historial completo (registro de test y congelación)
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0  # v7.1.0
+        with:
+          python-version: "3.14.7"
+          cache: pip
+          cache-dependency-path: requirements-dev.lock.txt
+      - name: Instalar dependencias bloqueadas
+        run: |
+          python -m pip install -r requirements-dev.lock.txt
+          python -m pip install --no-deps -e .
+      - name: ruff
+        run: ruff check .
+      - name: pytest (sin dataset completo; datos de prueba solo de train o sintéticos)
+        run: python -m pytest --ignore=tests/test_api.py --ignore=tests/test_release.py
+      - name: Componente de release (ramas aprobada sintética, rechazada e integridad fallida)
+        run: python -m pytest tests/test_release.py -v
+      - name: Contrato de FastAPI y /metrics
+        run: python -m pytest tests/test_api.py -v
+      - name: Decisión sobre la versión real (aprobada o bloqueada; solo falla la integridad)
+        id: release
+        run: |
+          set +e
+          python -m hdfs_anomaly.release decide --output release_decision.json
+          code=$?
+          set -e
+          case "$code" in
+            0) echo "approved=true" >> "$GITHUB_OUTPUT" ;;
+            3) echo "approved=false" >> "$GITHUB_OUTPUT" ;;
+            *) echo "::error::release decide no pudo decidir (código $code): integridad o error"; exit 1 ;;
+          esac
+          python -c "import json,sys; d=json.load(open('release_decision.json')); sys.exit(0 if d['approved'] == ($code == 0) == d['aliases_allowed'] else 1)"
+          { echo '### Decisión de release (informativa; la CI no publica)'; echo '```json'; cat release_decision.json; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+  docker:
+    name: imagen de demostración y prueba de humo
+    needs: test
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0  # v7.1.0
+        with:
+          python-version: "3.14.7"
+          cache: pip
+          cache-dependency-path: requirements-dev.lock.txt
+      - name: Instalar dependencias bloqueadas
+        run: |
+          python -m pip install -r requirements-dev.lock.txt
+          python -m pip install --no-deps -e .
+      - name: Construir la imagen de demostración (local al runner; no se publica)
+        run: docker build -t hdfs-anomaly:demo-local .
+      - name: Prueba de humo del contenedor (demo) y coherencia de APP_MODE=production con el gate
+        env:
+          RUN_DOCKER_TESTS: "1"
+        run: python -m pytest tests/test_api.py -k docker -v
+      - name: APP_MODE=production solo arranca si el gate aprobó la versión
+        env:
+          APPROVED: ${{ needs.test.outputs.approved }}
+        run: |
+          if [ "$APPROVED" = "true" ]; then
+            echo "Versión aprobada: production debe arrancar (lo comprueba la prueba de humo anterior)"
+          elif docker run --rm -e APP_MODE=production hdfs-anomaly:demo-local; then
+            echo "::error::la imagen arrancó en modo production con un modelo no aprobado"; exit 1
+          fi

@@ -1,0 +1,190 @@
+{
+  "config_sha256": "06c09b9bbbab23a06cd7becad827a617d152f08668649a3bd3af535dadef42b0",
+  "train_config": {
+    "max_fpr": 0.005,
+    "rf_min_f1_gain": 0.01,
+    "tie_decimals": 4,
+    "cv_folds": 5,
+    "n_jobs": 8,
+    "rf_n_estimators": 200,
+    "grid": {
+      "lr": {
+        "C": [
+          0.01,
+          0.1,
+          1.0,
+          10.0
+        ],
+        "class_weight": [
+          "none",
+          "balanced"
+        ]
+      },
+      "rf": {
+        "max_depth": [
+          8,
+          16,
+          "none"
+        ],
+        "min_samples_leaf": [
+          1,
+          5
+        ],
+        "class_weight": [
+          "none",
+          "balanced_subsample"
+        ]
+      }
+    },
+    "pilot": {
+      "rf": {
+        "n_estimators": 50,
+        "max_depth": [
+          8,
+          "none"
+        ],
+        "min_samples_leaf": [
+          1
+        ],
+        "class_weight": [
+          "balanced_subsample"
+        ]
+      }
+    }
+  },
+  "seed": 42,
+  "partition": "completion",
+  "manifest_sha256": "1580225fe7ced911a55d3c3ad4c37558439f013c2a7e0df298f2b505b0944a91",
+  "sources": {
+    "Event_occurrence_matrix.csv": {
+      "sha256": "59ab8b8a6d12f18f41b35e9eb0113655825b9bf9d9787c1a6f72fface7cc01a7",
+      "bytes": 53099247
+    },
+    "anomaly_label.csv": {
+      "sha256": "1c711ed6c8848fc3243fb4d092f172f31d128c8a6ec7f26ebba72ab931885ed8",
+      "bytes": 18637554
+    },
+    "block_times.csv.gz": {
+      "sha256": "b2a70abfb8ba8a7e23533db3c3e0d8154d28bb0518467d30469e44728da03bbe",
+      "bytes": 9050884
+    }
+  },
+  "rows": {
+    "train": 345059,
+    "validation": 114992
+  },
+  "environment": {
+    "python": "3.14.7",
+    "sklearn": "1.9.1",
+    "pandas": "3.1.1",
+    "numpy": "2.5.5"
+  },
+  "git": {
+    "commit": "a869153be9899f37c2babd1c60576a5c3f8d9f6e",
+    "dirty": false
+  },
+  "test_used": false,
+  "note": "Solo train ∪ validation de 'completion'; test excluido. Diagnóstico.",
+  "results": {
+    "first_seen_dev/lr": {
+      "train_rows": 345038,
+      "eval_rows": 115013,
+      "eval_positives": 2986,
+      "threshold": 0.034601341324390064,
+      "constraint_met": true,
+      "validation": {
+        "n": 115013,
+        "positives": 2986,
+        "pr_auc": 0.99964,
+        "roc_auc": 0.999664,
+        "precision": 0.999665,
+        "recall": 0.99933,
+        "f1": 0.999498,
+        "fpr": 9e-06,
+        "mcc": 0.999484,
+        "accuracy": 0.999974,
+        "confusion_matrix": {
+          "tn": 112026,
+          "fp": 1,
+          "fn": 2,
+          "tp": 2984
+        }
+      }
+    },
+    "first_seen_dev/rf": {
+      "train_rows": 345038,
+      "eval_rows": 115013,
+      "eval_positives": 2986,
+      "threshold": 0.09,
+      "constraint_met": true,
+      "validation": {
+        "n": 115013,
+        "positives": 2986,
+        "pr_auc": 0.999999,
+        "roc_auc": 1.0,
+        "precision": 0.999331,
+        "recall": 1.0,
+        "f1": 0.999665,
+        "fpr": 1.8e-05,
+        "mcc": 0.999656,
+        "accuracy": 0.999983,
+        "confusion_matrix": {
+          "tn": 112025,
+          "fp": 2,
+          "fn": 0,
+          "tp": 2986
+        }
+      }
+    },
+    "stratified_dev/lr": {
+      "train_rows": 345038,
+      "eval_rows": 115013,
+      "eval_positives": 3538,
+      "threshold": 0.44730081546764433,
+      "constraint_met": true,
+      "validation": {
+        "n": 115013,
+        "positives": 3538,
+        "pr_auc": 0.998193,
+        "roc_auc": 0.999968,
+        "precision": 0.992688,
+        "recall": 0.997739,
+        "f1": 0.995207,
+        "fpr": 0.000233,
+        "mcc": 0.995058,
+        "accuracy": 0.999704,
+        "confusion_matrix": {
+          "tn": 111449,
+          "fp": 26,
+          "fn": 8,
+          "tp": 3530
+        }
+      }
+    },
+    "stratified_dev/rf": {
+      "train_rows": 345038,
+      "eval_rows": 115013,
+      "eval_positives": 3538,
+      "threshold": 0.22410163855341525,
+      "constraint_met": true,
+      "validation": {
+        "n": 115013,
+        "positives": 3538,
+        "pr_auc": 0.999962,
+        "roc_auc": 0.999999,
+        "precision": 0.997744,
+        "recall": 1.0,
+        "f1": 0.998871,
+        "fpr": 7.2e-05,
+        "mcc": 0.998835,
+        "accuracy": 0.99993,
+        "confusion_matrix": {
+          "tn": 111467,
+          "fp": 8,
+          "fn": 0,
+          "tp": 3538
+        }
+      }
+    }
+  }
+}

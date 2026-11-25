@@ -1,0 +1,32 @@
+{
+  "description": "Procedencia del candidato congelado incluido en esta distribución. Los commits pertenecen al repositorio de origen, cuyo historial NO se incluye: aquí solo pueden comprobarse los SHA-256. La evaluación única de test no es demostrable con este historial, por lo que release decide bloquea la publicación de este candidato.",
+  "origin_commits": {
+    "training_code_commit": "a869153be9899f37c2babd1c60576a5c3f8d9f6e",
+    "freeze_commit": "feda273fcf9fa6e0a35d11a444a2ec2aca78ef16",
+    "evaluation_commit": "4bdec593b3db3953a1769fc446b3c1b9bf455f59",
+    "test_record_commit": "0f05be6e696daac56fcff2c6f7fdcf529f1bf993",
+    "source_snapshot_commit": "bad22d6c70a8ed301245e69dbf8669f0382747f4"
+  },
+  "verified_in_origin": [
+    "freeze_commit es el último commit que modificó models/candidate/spec.json",
+    "reports/train/test_evaluation.json aparece en un único commit (test_record_commit)",
+    "training_code_commit y evaluation_commit existen en el repositorio de origen",
+    "files_sha256 coincide con el contenido de source_snapshot_commit"
+  ],
+  "files_sha256": {
+    "models/candidate/model.joblib": "da81e6ba7be50c103887e78a5912340cd40f563d9c20368827f55402b79d1076",
+    "models/candidate/spec.json": "d39d109cfd832dabc551f65cfc5de6d4a92c521264f845f82ee5b6be5afbb3c7",
+    "config.toml": "06c09b9bbbab23a06cd7becad827a617d152f08668649a3bd3af535dadef42b0",
+    "monitoring/reference_train.json": "83b4f513eb2498be266ce7abfa419cba242d87c96b387eda75f09420bcd79171",
+    "reports/data/split_summary.json": "ab0bb28f085300791b7aff6a4ebff8f6dd9cedb689c6e919c9adb12ed47a570a",
+    "reports/data/validation_report.json": "386a8e34af7779148b6817282767cec33a481a164ba3b8d219a1b2676197980c",
+    "reports/train/candidate_spec.json": "d5ce4f5bb2082cda9afacccb31e10bb88686c76604fba4b9c928fff52c2e61b3",
+    "reports/train/error_analysis.json": "db165e5bb162e7fb13a8b2b7caf4be74b5daa15302aeb2072e1ce53312964e0e",
+    "reports/train/pattern_diagnostics.json": "cf980fef8cd4640de56014a049d990b3716e0a6f4f4ea590bd5ed87256ddc62a",
+    "reports/train/rf_pilot.json": "abf8c7143b98a55cabb3f8c666ce04a12edb73721b10ef39835fd5f5da11b863",
+    "reports/train/selection_results.json": "74ee1b92aee9d29088ad0ad481aabbcb898101fa476e056cc9fcf9235a57794b",
+    "reports/train/sensitivity.json": "b1340b7a1c8879de99acea901a2a6e59090b85f57f3f1621ab828a7a5640703c",
+    "reports/train/test_error_analysis.json": "1350cba8289a6593442a779f533c9d53f4e68712a692dcf99b1893849cee6921",
+    "reports/train/test_evaluation.json": "d4b6c04f9acc6f4bdcfe09340191b357a4304f387a08d98645e66eac062aa736"
+  }
+}

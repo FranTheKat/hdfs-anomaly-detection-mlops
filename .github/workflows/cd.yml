@@ -1,0 +1,106 @@
+# Despliegue continuo con quality gate OBLIGATORIO.
+# Solo publica en GHCR si release.decide aprueba los artefactos commiteados (gate=passed,
+# hashes, identidad y procedencia verificados en este repositorio). No tiene entradas manuales
+# ni variables que lo omitan.
+# Con el candidato actual (gate=failed, procedencia «imported») el job "publish" NO se ejecuta.
+# Solo un candidato entrenado, congelado y evaluado una vez dentro de este repositorio puede
+# llegar a publicarse.
+# Acciones fijadas por SHA completo de su versión oficial (verificado con la API de GitHub).
+name: cd
+
+on:
+  push:
+    branches: [main]
+
+permissions: {}  # cada job declara lo mínimo que necesita
+
+concurrency:
+  group: cd-main
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    name: quality gate de publicación
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    outputs:
+      approved: ${{ steps.decide.outputs.approved }}
+      model_id: ${{ steps.decide.outputs.model_id }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0  # v7.1.0
+        with:
+          python-version: "3.14.7"
+      - name: Decidir publicación (solo biblioteca estándar; no deserializa el modelo)
+        id: decide
+        env:
+          PYTHONPATH: src
+        run: |
+          set +e
+          python -m hdfs_anomaly.release decide --output release_decision.json
+          code=$?
+          set -e
+          case "$code" in
+            0) echo "approved=true" >> "$GITHUB_OUTPUT" ;;
+            3) echo "approved=false" >> "$GITHUB_OUTPUT"
+               echo "::notice::Publicación BLOQUEADA: el modelo no superó el quality gate" ;;
+            *) echo "::error::Validación de artefactos fallida: no se publica"; exit 1 ;;
+          esac
+          python -c "import json; print('model_id=' + json.load(open('release_decision.json'))['model_id'])" >> "$GITHUB_OUTPUT"
+      - name: Resumen
+        run: |
+          { echo '### Decisión de publicación'; echo '```json'; cat release_decision.json; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9  # v7.0.2
+        with:
+          name: release-decision
+          path: release_decision.json
+
+  publish:
+    name: publicar imagen en GHCR (solo modelos aprobados)
+    needs: gate
+    if: needs.gate.outputs.approved == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0  # v7.1.0
+        with:
+          python-version: "3.14.7"
+      - name: Re-verificar el gate en este job (no basta con la salida del job anterior)
+        env:
+          PYTHONPATH: src
+        run: python -m hdfs_anomaly.release decide --output release_decision.json  # código != 0 aborta
+      - name: Construir imagen con identidad del modelo
+        run: |
+          sha=$(python -c "import json; print(json.load(open('release_decision.json'))['model_sha256'])")
+          docker build -t candidate:${{ github.sha }} \
+            --label io.hdfs-anomaly.model.sha256="$sha" \
+            --label io.hdfs-anomaly.model.id="${{ needs.gate.outputs.model_id }}" \
+            --label org.opencontainers.image.revision="${{ github.sha }}" .
+      - name: Prueba de humo en modo production (exige gate=passed para arrancar)
+        run: |
+          cid=$(docker run -d -e APP_MODE=production -p 127.0.0.1:8000:8000 candidate:${{ github.sha }})
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8000/health && break; sleep 1; done
+          curl -fsS http://127.0.0.1:8000/model/info | python -c "import json,sys; d=json.load(sys.stdin); sys.exit(0 if d['gate']=='passed' and not d['demo_only'] else 1)"
+          docker stop "$cid"
+      - name: Publicar en GHCR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          image="ghcr.io/${GITHUB_REPOSITORY,,}"
+          echo "$GH_TOKEN" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          docker tag candidate:${{ github.sha }} "$image:model-${{ needs.gate.outputs.model_id }}"
+          docker tag candidate:${{ github.sha }} "$image:sha-${{ github.sha }}"
+          docker push "$image:model-${{ needs.gate.outputs.model_id }}"
+          docker push "$image:sha-${{ github.sha }}"

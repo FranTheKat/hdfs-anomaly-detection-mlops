@@ -1,0 +1,106 @@
+{
+  "status": "PROPUESTA — pendiente de aprobación; NO congelada; test no evaluado",
+  "family": "lr",
+  "params": {
+    "C": 10.0,
+    "class_weight": "none"
+  },
+  "seed": 42,
+  "threshold": 0.07222539011103471,
+  "max_fpr": 0.005,
+  "features": [
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5",
+    "E6",
+    "E7",
+    "E8",
+    "E9",
+    "E10",
+    "E11",
+    "E12",
+    "E13",
+    "E14",
+    "E15",
+    "E16",
+    "E17",
+    "E18",
+    "E19",
+    "E20",
+    "E21",
+    "E22",
+    "E23",
+    "E24",
+    "E25",
+    "E26",
+    "E27",
+    "E28",
+    "E29"
+  ],
+  "validation_metrics": {
+    "n": 114992,
+    "positives": 3118,
+    "pr_auc": 0.998352,
+    "roc_auc": 0.999194,
+    "precision": 0.9968,
+    "recall": 0.999038,
+    "f1": 0.997918,
+    "fpr": 8.9e-05,
+    "mcc": 0.99786,
+    "accuracy": 0.999887,
+    "confusion_matrix": {
+      "tn": 111864,
+      "fp": 10,
+      "fn": 3,
+      "tp": 3115
+    }
+  },
+  "baseline_lr_validation_metrics": {
+    "n": 114992,
+    "positives": 3118,
+    "pr_auc": 0.998352,
+    "roc_auc": 0.999194,
+    "precision": 0.9968,
+    "recall": 0.999038,
+    "f1": 0.997918,
+    "fpr": 8.9e-05,
+    "mcc": 0.99786,
+    "accuracy": 0.999887,
+    "confusion_matrix": {
+      "tn": 111864,
+      "fp": 10,
+      "fn": 3,
+      "tp": 3115
+    }
+  },
+  "model_sha256": "da81e6ba7be50c103887e78a5912340cd40f563d9c20368827f55402b79d1076",
+  "model_path": "artifacts/train/candidate.joblib",
+  "config_sha256": "06c09b9bbbab23a06cd7becad827a617d152f08668649a3bd3af535dadef42b0",
+  "manifest_sha256": "1580225fe7ced911a55d3c3ad4c37558439f013c2a7e0df298f2b505b0944a91",
+  "sources": {
+    "Event_occurrence_matrix.csv": {
+      "sha256": "59ab8b8a6d12f18f41b35e9eb0113655825b9bf9d9787c1a6f72fface7cc01a7",
+      "bytes": 53099247
+    },
+    "anomaly_label.csv": {
+      "sha256": "1c711ed6c8848fc3243fb4d092f172f31d128c8a6ec7f26ebba72ab931885ed8",
+      "bytes": 18637554
+    },
+    "block_times.csv.gz": {
+      "sha256": "b2a70abfb8ba8a7e23533db3c3e0d8154d28bb0518467d30469e44728da03bbe",
+      "bytes": 9050884
+    }
+  },
+  "environment": {
+    "python": "3.14.7",
+    "sklearn": "1.9.1",
+    "pandas": "3.1.1",
+    "numpy": "2.5.5"
+  },
+  "git": {
+    "commit": "a869153be9899f37c2babd1c60576a5c3f8d9f6e",
+    "dirty": false
+  }
+}

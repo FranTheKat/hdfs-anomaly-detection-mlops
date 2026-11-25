@@ -1,0 +1,67 @@
+# Configuración central del pipeline.
+# Las rutas relativas se resuelven desde la raíz del repositorio.
+
+[data]
+# Carpeta HDFS_v1 descomprimida (ver README). La sobrescriben la variable de
+# entorno HDFS_V1_DIR y el argumento --data-dir, en ese orden de prioridad.
+dir = "data/HDFS_v1"
+matrix = "preprocessed/Event_occurrence_matrix.csv"
+labels = "preprocessed/anomaly_label.csv"
+
+[split]
+# completion: cronológica por instante de finalización de cada traza (principal).
+#   Requiere block_times (python -m hdfs_anomaly.timeline, necesita HDFS.log).
+# first_seen: orden de primera aparición del bloque (solo comparación).
+# stratified: aleatoria estratificada (solo comparación).
+strategy = "completion"
+block_times = "artifacts/data/block_times.csv.gz"
+train = 0.6
+validation = 0.2
+test = 0.2
+seed = 42
+
+[validation]
+# Rango plausible de la tasa de anomalías; fuera de él se emite un aviso.
+min_anomaly_rate = 0.005
+max_anomaly_rate = 0.10
+
+[output]
+artifacts = "artifacts/data"   # regenerable, no versionado
+reports = "reports/data"       # informes pequeños, versionados como evidencia
+models = "models/candidate"    # candidato congelado (≈3 KB), versionado con su especificación
+
+# --- Quality gate absoluto (definitivo para este experimento; NO se cambia tras ver test) ---
+# Umbrales académicos de aceptación fijados antes de evaluar test; no son un SLA validado.
+[gate]
+min_recall = 0.90
+min_precision = 0.90
+max_fpr = 0.005
+
+# --- Fase 3: selección de modelos (fijado ANTES de ver resultados) ---------------
+[train]
+# Límite de tasa de falsos positivos para elegir el umbral en validation (igual que gate.max_fpr).
+max_fpr = 0.005
+# El RF solo sustituye a la LR si mejora F1 (con su umbral) en al menos este margen,
+# no empeora la PR-AUC y cumple max_fpr. Si no, se conserva la LR (regla única, plan F.6).
+rf_min_f1_gain = 0.01
+# Decimales para considerar empatadas dos PR-AUC (desempate: configuración más simple).
+tie_decimals = 4
+cv_folds = 5
+n_jobs = 8            # núcleos para RF (de 24 disponibles)
+rf_n_estimators = 200
+
+[train.grid.lr]
+C = [0.01, 0.1, 1.0, 10.0]
+class_weight = ["none", "balanced"]
+
+[train.grid.rf]
+max_depth = [8, 16, "none"]
+min_samples_leaf = [1, 5]
+class_weight = ["none", "balanced_subsample"]
+
+# Prueba piloto de RF (pequeña) para medir tiempos antes de la rejilla completa.
+[train.pilot.rf]
+n_estimators = 50
+max_depth = [8, "none"]
+min_samples_leaf = [1]
+class_weight = ["balanced_subsample"]

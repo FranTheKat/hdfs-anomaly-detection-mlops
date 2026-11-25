@@ -1,0 +1,240 @@
+{
+  "alerts": [],
+  "features": {
+    "E1": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 0.0,
+      "psi": null,
+      "status": "constant_in_reference"
+    },
+    "E10": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 0.000104,
+      "psi": 0.000124,
+      "status": "stable"
+    },
+    "E11": {
+      "nonzero_rate": 0.9865,
+      "nonzero_rate_ref": 0.987185,
+      "psi": 0.00025,
+      "status": "stable"
+    },
+    "E12": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 3.8e-05,
+      "psi": 0.000391,
+      "status": "stable"
+    },
+    "E13": {
+      "nonzero_rate": 0.0005,
+      "nonzero_rate_ref": 0.000684,
+      "psi": 6e-06,
+      "status": "stable"
+    },
+    "E14": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 0.000107,
+      "psi": 0.000118,
+      "status": "stable"
+    },
+    "E15": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 4.6e-05,
+      "psi": 0.000334,
+      "status": "stable"
+    },
+    "E16": {
+      "nonzero_rate": 0.006,
+      "nonzero_rate_ref": 0.005625,
+      "psi": 6.5e-05,
+      "status": "stable"
+    },
+    "E17": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 2.3e-05,
+      "psi": 0.000522,
+      "status": "stable"
+    },
+    "E18": {
+      "nonzero_rate": 0.006,
+      "nonzero_rate_ref": 0.00566,
+      "psi": 5.8e-05,
+      "status": "stable"
+    },
+    "E19": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 3e-06,
+      "psi": 0.000995,
+      "status": "stable"
+    },
+    "E2": {
+      "nonzero_rate": 0.21,
+      "nonzero_rate_ref": 0.211283,
+      "psi": 0.000927,
+      "status": "stable"
+    },
+    "E20": {
+      "nonzero_rate": 0.0075,
+      "nonzero_rate_ref": 0.008885,
+      "psi": 0.000691,
+      "status": "stable"
+    },
+    "E21": {
+      "nonzero_rate": 0.8895,
+      "nonzero_rate_ref": 0.897571,
+      "psi": 0.000801,
+      "status": "stable"
+    },
+    "E22": {
+      "nonzero_rate": 1.0,
+      "nonzero_rate_ref": 1.0,
+      "psi": null,
+      "status": "constant_in_reference"
+    },
+    "E23": {
+      "nonzero_rate": 0.8895,
+      "nonzero_rate_ref": 0.897441,
+      "psi": 0.000696,
+      "status": "stable"
+    },
+    "E24": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 1.2e-05,
+      "psi": 0.000699,
+      "status": "stable"
+    },
+    "E25": {
+      "nonzero_rate": 0.006,
+      "nonzero_rate_ref": 0.00566,
+      "psi": 5.8e-05,
+      "status": "stable"
+    },
+    "E26": {
+      "nonzero_rate": 0.9865,
+      "nonzero_rate_ref": 0.987124,
+      "psi": 0.00059,
+      "status": "stable"
+    },
+    "E27": {
+      "nonzero_rate": 0.001,
+      "nonzero_rate_ref": 0.001808,
+      "psi": 0.000208,
+      "status": "stable"
+    },
+    "E28": {
+      "nonzero_rate": 0.005,
+      "nonzero_rate_ref": 0.003623,
+      "psi": 0.000604,
+      "status": "stable"
+    },
+    "E29": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 4.1e-05,
+      "psi": 0.000371,
+      "status": "stable"
+    },
+    "E3": {
+      "nonzero_rate": 0.4035,
+      "nonzero_rate_ref": 0.398233,
+      "psi": 0.001802,
+      "status": "stable"
+    },
+    "E4": {
+      "nonzero_rate": 0.378,
+      "nonzero_rate_ref": 0.374704,
+      "psi": 0.001699,
+      "status": "stable"
+    },
+    "E5": {
+      "nonzero_rate": 1.0,
+      "nonzero_rate_ref": 1.0,
+      "psi": 0.000159,
+      "status": "stable"
+    },
+    "E6": {
+      "nonzero_rate": 0.006,
+      "nonzero_rate_ref": 0.005625,
+      "psi": 6.5e-05,
+      "status": "stable"
+    },
+    "E7": {
+      "nonzero_rate": 0.007,
+      "nonzero_rate_ref": 0.006744,
+      "psi": 0.000171,
+      "status": "stable"
+    },
+    "E8": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 6.4e-05,
+      "psi": 0.000248,
+      "status": "stable"
+    },
+    "E9": {
+      "nonzero_rate": 0.9865,
+      "nonzero_rate_ref": 0.987124,
+      "psi": 0.000391,
+      "status": "stable"
+    }
+  },
+  "interpretation": "Un PSI alto o un cambio de tasa indican un CAMBIO de distribución, no una degradación demostrada. Precision y recall en operación solo se pueden calcular con etiquetas reales posteriores. Las alertas sirven para decidir si investigar o reentrenar, no para reentrenar automáticamente.",
+  "novel_patterns": {
+    "distinct_patterns": 76,
+    "rate": 0.0
+  },
+  "reference": {
+    "config_sha256": "06c09b9bbbab23a06cd7becad827a617d152f08668649a3bd3af535dadef42b0",
+    "manifest_sha256": "1580225fe7ced911a55d3c3ad4c37558439f013c2a7e0df298f2b505b0944a91",
+    "model_sha256": "da81e6ba7be50c103887e78a5912340cd40f563d9c20368827f55402b79d1076",
+    "partition": "train",
+    "rows": 345059,
+    "source": "train"
+  },
+  "rows": 2000,
+  "rules": {
+    "insufficient_sample": "n < 500: se calculan indicadores pero no se emiten alertas de distribución.",
+    "novel_patterns": "Patrones no vistos en train ≥ 2% → aviso; ≥ 5% → alerta (el modelo fue poco fiable con patrones nuevos).",
+    "predicted_rate": "Tasa de anomalías predichas: |z| ≥ 4.0 frente a la referencia y |Δ| ≥ 1%.",
+    "psi_feature": "PSI de una característica ≥ 0.1 → aviso; ≥ 0.25 → alerta (si 500 ≤ n < 2000, solo se emiten alertas ≥ 0.25).",
+    "psi_score": "PSI de la puntuación ≥ 0.1 → aviso; ≥ 0.25 → alerta.",
+    "schema": "Columnas ausentes/extra o prohibidas, nulos, no enteros, negativos, valores por encima del máximo de train o desviaciones en columnas constantes → aviso; columnas ausentes, prohibidas o negativas → alerta."
+  },
+  "sample_size": "ok",
+  "schema": {
+    "above_train_max": {},
+    "all_zero_rows": 0,
+    "constant_deviation": {},
+    "forbidden_columns": [],
+    "missing_columns": [],
+    "negative": {},
+    "non_integer": {},
+    "null_or_non_numeric": {},
+    "unexpected_columns": []
+  },
+  "scores": {
+    "predicted_anomaly_rate": 0.0335,
+    "predicted_anomaly_rate_ref": 0.032925,
+    "psi": 6.8e-05,
+    "quantiles": {
+      "0.5": 3.2e-05,
+      "0.9": 6.8e-05,
+      "0.99": 1.0
+    },
+    "score_counts": [
+      1933,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      3,
+      8,
+      54
+    ],
+    "status": "stable",
+    "z": 0.144
+  },
+  "status": "ok",
+  "window": "baseline.csv",
+  "window_sha256": "19a9f370790adb9dd9ab3eae1db33c1beace097d81fce9be7b24ed387007f34d"
+}

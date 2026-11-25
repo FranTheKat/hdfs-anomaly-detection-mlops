@@ -1,0 +1,246 @@
+{
+  "alerts": [
+    {
+      "message": "Solo 200 filas: no se emiten alertas de distribución",
+      "rule": "insufficient_sample",
+      "severity": "info"
+    }
+  ],
+  "features": {
+    "E1": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 0.0,
+      "psi": null,
+      "status": "constant_in_reference"
+    },
+    "E10": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 0.000104,
+      "psi": 0.007527,
+      "status": "stable"
+    },
+    "E11": {
+      "nonzero_rate": 0.995,
+      "nonzero_rate_ref": 0.987185,
+      "psi": 0.01109,
+      "status": "stable"
+    },
+    "E12": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 3.8e-05,
+      "psi": 0.010173,
+      "status": "stable"
+    },
+    "E13": {
+      "nonzero_rate": 0.005,
+      "nonzero_rate_ref": 0.000684,
+      "psi": 0.016228,
+      "status": "stable"
+    },
+    "E14": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 0.000107,
+      "psi": 0.007453,
+      "status": "stable"
+    },
+    "E15": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 4.6e-05,
+      "psi": 0.009647,
+      "status": "stable"
+    },
+    "E16": {
+      "nonzero_rate": 0.005,
+      "nonzero_rate_ref": 0.005625,
+      "psi": 0.000522,
+      "status": "stable"
+    },
+    "E17": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 2.3e-05,
+      "psi": 0.011372,
+      "status": "stable"
+    },
+    "E18": {
+      "nonzero_rate": 0.005,
+      "nonzero_rate_ref": 0.00566,
+      "psi": 0.000501,
+      "status": "stable"
+    },
+    "E19": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 3e-06,
+      "psi": 0.015773,
+      "status": "stable"
+    },
+    "E2": {
+      "nonzero_rate": 0.195,
+      "nonzero_rate_ref": 0.211283,
+      "psi": 0.025775,
+      "status": "stable"
+    },
+    "E20": {
+      "nonzero_rate": 0.01,
+      "nonzero_rate_ref": 0.008885,
+      "psi": 0.006204,
+      "status": "stable"
+    },
+    "E21": {
+      "nonzero_rate": 0.915,
+      "nonzero_rate_ref": 0.897571,
+      "psi": 0.003316,
+      "status": "stable"
+    },
+    "E22": {
+      "nonzero_rate": 1.0,
+      "nonzero_rate_ref": 1.0,
+      "psi": null,
+      "status": "constant_in_reference"
+    },
+    "E23": {
+      "nonzero_rate": 0.915,
+      "nonzero_rate_ref": 0.897441,
+      "psi": 0.004666,
+      "status": "stable"
+    },
+    "E24": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 1.2e-05,
+      "psi": 0.013,
+      "status": "stable"
+    },
+    "E25": {
+      "nonzero_rate": 0.005,
+      "nonzero_rate_ref": 0.00566,
+      "psi": 0.000501,
+      "status": "stable"
+    },
+    "E26": {
+      "nonzero_rate": 0.995,
+      "nonzero_rate_ref": 0.987124,
+      "psi": 0.011696,
+      "status": "stable"
+    },
+    "E27": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 0.001808,
+      "psi": 0.000216,
+      "status": "stable"
+    },
+    "E28": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 0.003623,
+      "psi": 0.000429,
+      "status": "stable"
+    },
+    "E29": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 4.1e-05,
+      "psi": 0.009986,
+      "status": "stable"
+    },
+    "E3": {
+      "nonzero_rate": 0.395,
+      "nonzero_rate_ref": 0.398233,
+      "psi": 0.014238,
+      "status": "stable"
+    },
+    "E4": {
+      "nonzero_rate": 0.385,
+      "nonzero_rate_ref": 0.374704,
+      "psi": 0.011475,
+      "status": "stable"
+    },
+    "E5": {
+      "nonzero_rate": 1.0,
+      "nonzero_rate_ref": 1.0,
+      "psi": 0.004029,
+      "status": "stable"
+    },
+    "E6": {
+      "nonzero_rate": 0.005,
+      "nonzero_rate_ref": 0.005625,
+      "psi": 0.000522,
+      "status": "stable"
+    },
+    "E7": {
+      "nonzero_rate": 0.005,
+      "nonzero_rate_ref": 0.006744,
+      "psi": 0.007525,
+      "status": "stable"
+    },
+    "E8": {
+      "nonzero_rate": 0.0,
+      "nonzero_rate_ref": 6.4e-05,
+      "psi": 0.008827,
+      "status": "stable"
+    },
+    "E9": {
+      "nonzero_rate": 0.995,
+      "nonzero_rate_ref": 0.987124,
+      "psi": 0.012597,
+      "status": "stable"
+    }
+  },
+  "interpretation": "Un PSI alto o un cambio de tasa indican un CAMBIO de distribución, no una degradación demostrada. Precision y recall en operación solo se pueden calcular con etiquetas reales posteriores. Las alertas sirven para decidir si investigar o reentrenar, no para reentrenar automáticamente.",
+  "novel_patterns": {
+    "distinct_patterns": 28,
+    "rate": 0.0
+  },
+  "reference": {
+    "config_sha256": "06c09b9bbbab23a06cd7becad827a617d152f08668649a3bd3af535dadef42b0",
+    "manifest_sha256": "1580225fe7ced911a55d3c3ad4c37558439f013c2a7e0df298f2b505b0944a91",
+    "model_sha256": "da81e6ba7be50c103887e78a5912340cd40f563d9c20368827f55402b79d1076",
+    "partition": "train",
+    "rows": 345059,
+    "source": "train"
+  },
+  "rows": 200,
+  "rules": {
+    "insufficient_sample": "n < 500: se calculan indicadores pero no se emiten alertas de distribución.",
+    "novel_patterns": "Patrones no vistos en train ≥ 2% → aviso; ≥ 5% → alerta (el modelo fue poco fiable con patrones nuevos).",
+    "predicted_rate": "Tasa de anomalías predichas: |z| ≥ 4.0 frente a la referencia y |Δ| ≥ 1%.",
+    "psi_feature": "PSI de una característica ≥ 0.1 → aviso; ≥ 0.25 → alerta (si 500 ≤ n < 2000, solo se emiten alertas ≥ 0.25).",
+    "psi_score": "PSI de la puntuación ≥ 0.1 → aviso; ≥ 0.25 → alerta.",
+    "schema": "Columnas ausentes/extra o prohibidas, nulos, no enteros, negativos, valores por encima del máximo de train o desviaciones en columnas constantes → aviso; columnas ausentes, prohibidas o negativas → alerta."
+  },
+  "sample_size": "insufficient",
+  "schema": {
+    "above_train_max": {},
+    "all_zero_rows": 0,
+    "constant_deviation": {},
+    "forbidden_columns": [],
+    "missing_columns": [],
+    "negative": {},
+    "non_integer": {},
+    "null_or_non_numeric": {},
+    "unexpected_columns": []
+  },
+  "scores": {
+    "predicted_anomaly_rate": 0.025,
+    "predicted_anomaly_rate_ref": 0.032925,
+    "psi": 0.003278,
+    "quantiles": {
+      "0.5": 3.2e-05,
+      "0.9": 6.8e-05,
+      "0.99": 0.999963
+    },
+    "score_counts": [
+      195,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      5
+    ],
+    "status": "stable",
+    "z": -0.628
+  },
+  "status": "insufficient_sample",
+  "window": "small.csv",
+  "window_sha256": "1784ee40519098a19d3571ccdcb9f178824ef2fb4fe217c61d69ffc4f8f9c587"
+}

@@ -1,0 +1,21 @@
+# Entorno de DEMOSTRACIÓN aislado. Modelo rechazado por el quality gate.
+#   docker compose --profile demo up --build -d
+#   docker compose --profile demo down
+# Sin MLflow remoto, sin dataset, sin secretos. Puerto publicado solo en 127.0.0.1.
+services:
+  api-demo:
+    profiles: ["demo"]
+    build: .
+    image: hdfs-anomaly:demo-local
+    environment:
+      APP_MODE: demo
+    ports:
+      - "127.0.0.1:8000:8000"
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: "no"

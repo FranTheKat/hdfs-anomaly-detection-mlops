@@ -1,0 +1,5 @@
+# Finales de línea fijos en todas las plataformas: los SHA-256 registrados (config.toml,
+# especificaciones) no deben cambiar al clonar en Windows con core.autocrlf.
+* text=auto eol=lf
+*.joblib binary
+*.gz binary

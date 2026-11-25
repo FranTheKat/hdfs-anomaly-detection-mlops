@@ -1,0 +1,120 @@
+{
+  "strategy": "completion",
+  "fractions": {
+    "train": 0.6,
+    "validation": 0.2,
+    "test": 0.2
+  },
+  "seed": 42,
+  "features": [
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5",
+    "E6",
+    "E7",
+    "E8",
+    "E9",
+    "E10",
+    "E11",
+    "E12",
+    "E13",
+    "E14",
+    "E15",
+    "E16",
+    "E17",
+    "E18",
+    "E19",
+    "E20",
+    "E21",
+    "E22",
+    "E23",
+    "E24",
+    "E25",
+    "E26",
+    "E27",
+    "E28",
+    "E29"
+  ],
+  "excluded_columns": [
+    "BlockId",
+    "Label",
+    "Latency",
+    "TimeInterval",
+    "Type"
+  ],
+  "target": "Label == 'Fail' -> 1",
+  "sources": {
+    "Event_occurrence_matrix.csv": {
+      "sha256": "59ab8b8a6d12f18f41b35e9eb0113655825b9bf9d9787c1a6f72fface7cc01a7",
+      "bytes": 53099247
+    },
+    "anomaly_label.csv": {
+      "sha256": "1c711ed6c8848fc3243fb4d092f172f31d128c8a6ec7f26ebba72ab931885ed8",
+      "bytes": 18637554
+    },
+    "block_times.csv.gz": {
+      "sha256": "b2a70abfb8ba8a7e23533db3c3e0d8154d28bb0518467d30469e44728da03bbe",
+      "bytes": 9050884
+    }
+  },
+  "manifest_sha256_uncompressed": "1580225fe7ced911a55d3c3ad4c37558439f013c2a7e0df298f2b505b0944a91",
+  "temporal_checks": {
+    "train_completion_range": [
+      "2008-11-09 20:38:10",
+      "2008-11-11 04:49:15"
+    ],
+    "validation_completion_range": [
+      "2008-11-11 04:49:16",
+      "2008-11-11 08:47:56"
+    ],
+    "test_completion_range": [
+      "2008-11-11 08:47:57",
+      "2008-11-11 11:16:28"
+    ],
+    "train_complete_before_validation": true,
+    "validation_complete_before_test": true,
+    "validation_started_before_previous_cut": 0.124017,
+    "test_started_before_previous_cut": 0.327476,
+    "prospective": true
+  },
+  "splits": {
+    "train": {
+      "rows": 345059,
+      "anomalies": 11035,
+      "anomaly_rate": 0.03198,
+      "distinct_vectors": 496,
+      "rows_with_vector_seen_in_train": 1.0,
+      "distinct_vectors_unseen_in_train": 0
+    },
+    "validation": {
+      "rows": 114992,
+      "anomalies": 3118,
+      "anomaly_rate": 0.027115,
+      "distinct_vectors": 83,
+      "rows_with_vector_seen_in_train": 0.992695,
+      "distinct_vectors_unseen_in_train": 41
+    },
+    "test": {
+      "rows": 115010,
+      "anomalies": 2685,
+      "anomaly_rate": 0.023346,
+      "distinct_vectors": 111,
+      "rows_with_vector_seen_in_train": 0.991201,
+      "distinct_vectors_unseen_in_train": 73
+    },
+    "block_ids_disjoint": true,
+    "all_rows_assigned": true,
+    "every_split_has_both_classes": true
+  },
+  "environment": {
+    "python": "3.14.7",
+    "pandas": "3.1.1",
+    "numpy": "2.5.5"
+  },
+  "git": {
+    "commit": "e128ea4ebc94e7e8a9e69d7c61257703174f2251",
+    "dirty": true
+  }
+}

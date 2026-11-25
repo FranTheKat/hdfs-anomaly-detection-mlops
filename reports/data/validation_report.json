@@ -1,0 +1,122 @@
+{
+  "passed": true,
+  "rows": 575061,
+  "checks": [
+    {
+      "name": "schema_columns",
+      "severity": "error",
+      "passed": true,
+      "detail": "esperadas 32 columnas en orden; faltan [], sobran []"
+    },
+    {
+      "name": "non_empty",
+      "severity": "error",
+      "passed": true,
+      "detail": "575061 filas"
+    },
+    {
+      "name": "block_id_not_null",
+      "severity": "error",
+      "passed": true,
+      "detail": "0 nulos"
+    },
+    {
+      "name": "block_id_unique",
+      "severity": "error",
+      "passed": true,
+      "detail": "0 duplicados"
+    },
+    {
+      "name": "block_id_format",
+      "severity": "error",
+      "passed": true,
+      "detail": "0 con formato distinto de blk_-?\\d+"
+    },
+    {
+      "name": "label_values",
+      "severity": "error",
+      "passed": true,
+      "detail": "0 etiquetas fuera de ['Fail', 'Success']"
+    },
+    {
+      "name": "events_integer_no_nulls",
+      "severity": "error",
+      "passed": true,
+      "detail": "29 columnas enteras"
+    },
+    {
+      "name": "events_non_negative",
+      "severity": "error",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "e22_allocate_once",
+      "severity": "warning",
+      "passed": true,
+      "detail": "0 bloques con E22 != 1 (cada bloque debería asignarse una vez)"
+    },
+    {
+      "name": "both_classes_present",
+      "severity": "error",
+      "passed": true,
+      "detail": "clases: ['Fail', 'Success']"
+    },
+    {
+      "name": "anomaly_rate_in_range",
+      "severity": "warning",
+      "passed": true,
+      "detail": "tasa 2.9280%; rango esperado [0.50%, 10.00%]"
+    },
+    {
+      "name": "type_column_is_label_leak",
+      "severity": "info",
+      "passed": true,
+      "detail": "Type informada exactamente en las filas Fail: excluida de las características"
+    },
+    {
+      "name": "labels_same_block_ids",
+      "severity": "error",
+      "passed": true,
+      "detail": "0 solo en matriz, 0 solo en etiquetas"
+    },
+    {
+      "name": "labels_match_reference",
+      "severity": "error",
+      "passed": true,
+      "detail": "0 etiquetas discordantes"
+    },
+    {
+      "name": "times_same_block_ids",
+      "severity": "error",
+      "passed": true,
+      "detail": "575061 bloques con marca de tiempo"
+    },
+    {
+      "name": "times_lines_match_events",
+      "severity": "error",
+      "passed": true,
+      "detail": "líneas de log por bloque == suma de E1..E29"
+    },
+    {
+      "name": "times_first_not_after_last",
+      "severity": "error",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "sources": {
+    "Event_occurrence_matrix.csv": {
+      "sha256": "59ab8b8a6d12f18f41b35e9eb0113655825b9bf9d9787c1a6f72fface7cc01a7",
+      "bytes": 53099247
+    },
+    "anomaly_label.csv": {
+      "sha256": "1c711ed6c8848fc3243fb4d092f172f31d128c8a6ec7f26ebba72ab931885ed8",
+      "bytes": 18637554
+    },
+    "block_times.csv.gz": {
+      "sha256": "b2a70abfb8ba8a7e23533db3c3e0d8154d28bb0518467d30469e44728da03bbe",
+      "bytes": 9050884
+    }
+  }
+}

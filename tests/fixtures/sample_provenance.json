@@ -1,0 +1,9 @@
+{
+  "source_partition": "train",
+  "strategy": "completion",
+  "manifest_sha256_uncompressed": "1580225fe7ced911a55d3c3ad4c37558439f013c2a7e0df298f2b505b0944a91",
+  "rows": 2000,
+  "anomalies": 500,
+  "seed": 42,
+  "sample_matrix_sha256": "6049b797936f0fc89357c76b3bcf4e1d582381952703e1f996b9c2c3b6579892"
+}

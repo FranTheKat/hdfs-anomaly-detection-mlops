@@ -1,0 +1,48 @@
+{
+  "demo_only": true,
+  "invalid_request_status": [
+    422,
+    422,
+    422
+  ],
+  "seed": 42,
+  "window_rows": 2000,
+  "windows": {
+    "anomaly_burst": {
+      "alerts": [
+        "warning:psi_feature",
+        "warning:psi_feature",
+        "alert:psi_score",
+        "alert:predicted_rate"
+      ],
+      "predicted_anomaly_rate": 0.173,
+      "rows": 2000,
+      "status": "alert"
+    },
+    "baseline": {
+      "alerts": [],
+      "predicted_anomaly_rate": 0.0335,
+      "rows": 2000,
+      "status": "ok"
+    },
+    "shifted": {
+      "alerts": [
+        "warning:schema",
+        "alert:psi_feature",
+        "alert:psi_feature",
+        "alert:novel_patterns"
+      ],
+      "predicted_anomaly_rate": 0.032,
+      "rows": 2000,
+      "status": "alert"
+    },
+    "small": {
+      "alerts": [
+        "info:insufficient_sample"
+      ],
+      "predicted_anomaly_rate": 0.025,
+      "rows": 200,
+      "status": "insufficient_sample"
+    }
+  }
+}

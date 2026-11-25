@@ -1,0 +1,14 @@
+# Dependencias directas fijadas y verificadas con Python 3.14.7. El bloqueo completo para
+# desarrollo y CI es requirements-dev.lock.txt; la imagen Docker usa requirements-api.txt.
+numpy==2.5.5
+pandas==3.1.1
+scikit-learn==1.9.1
+pytest==9.2.0
+ruff==0.17.6
+mlflow==3.18.0         # tracking y Model Registry con SQLite local
+fastapi==0.165.0
+pydantic==2.14.4
+uvicorn==0.54.0
+joblib==1.6.0
+httpx==0.28.1          # solo pruebas (TestClient)
+prometheus-client==0.26.0  # /metrics
